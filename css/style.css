@@ -10,7 +10,7 @@ html {
 }
 
 .container {
-  background-color: #f5f3f3;
+  background-color: #094dad87;
 }
 
 .container nav {
@@ -18,7 +18,7 @@ html {
   display: flex;
   justify-content: flex-end;
   padding: 15px;
-  background-color: #fff;
+  background-color:#0916ad;
   margin-bottom: 30px;
   color: #333;
 }
@@ -42,7 +42,7 @@ html {
   height: auto;
   position: absolute;
   right: 0;
-  background-color: #ffff;
+  background-color: #0916ad ;
 }
 
 .container nav i:hover .nav-card {
@@ -50,7 +50,7 @@ html {
   display: flex;
   justify-content: space-between;
   margin: 0 10px 0 10px;
-  border-bottom: solid thin #e1e1e1;
+  border-bottom: solid thin #5885ab;
 }
 
 .container nav i:hover .buy-card > button {
@@ -59,7 +59,7 @@ html {
   padding: 1rem;
   margin: 10px auto;
   background-color: transparent;
-  border: solid thin #e1e1e1;
+  border: solid thin #5885ab;
   color: #494848;
   cursor: pointer;
 }
@@ -152,62 +152,62 @@ h1 {
   transition: all .3s;
 }
 
-.lista_de_cursos div {
+.lista_de_zapatillas div {
   display: none;
   text-align: center;
   padding: 10px 0 0 0;
   border-top: solid thin gray;
 }
 
-.container nav i:hover .buy-card > .lista_de_cursos div {
+.container nav i:hover .buy-card > .lista_de_zapatillas div {
   display: flex;
 }
 
-.lista_de_cursos img {
+.lista_de_zapatillas img {
   width: 100px;
 }
 
-.lista_de_cursos p {
+.lista_de_zapatillas p {
   width: 300px;
   font-size: 1.3rem;
 }
 
-.lista_de_cursos p:nth-child(4) {
+.lista_de_zapatillas p:nth-child(4) {
   padding-left: 40px;
 }
 
-.lista_de_cursos p:last-child span {
+.lista_de_zapatillas p:last-child span {
   background-color: red;
   border-radius: 50%;
   padding: 5px 10px;
   color: #fff;
 }
 
-.contenedor-cursos {
+.contenedor-zapatilla {
   display: none;
   text-align: center;
   padding: 10px 0 0 0;
   border-top: solid thin gray;
 }
 
-.container nav i:hover .buy-card > .contenedor-cursos  {
+.container nav i:hover .buy-card > .contenedor-zapatilla  {
   display: flex;
 }
 
-.contenedor-cursos img{
+.contenedor-zapatilla img{
   width: 100px;
 }
 
-.contenedor-cursos p {
+.contenedor-zapatilla p {
   width: 300px;
   font-size: 1.3rem;
 }
 
-.contenedor-cursos :nth-child(4) {
+.contenedor-zapatilla :nth-child(4) {
   padding-left: 40px;
 }
 
-.contenedor-cursos p:last-child span {
+.contenedor-zapatilla p:last-child span {
   background-color: red;
   border-radius: 50%;
   padding: 5px 10px;
