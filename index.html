@@ -1,11 +1,14 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de Zapatillas</title>
-    <link rel="stylesheet" href="./css/style.css"> <!-- Enlazando el CSS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://kit.fontawesome.com/57faba85b1.js" crossorigin="anonymous"></script>
+
+    <title>Carrito de compras</title>
 </head>
 <body>
     <div class="container">
@@ -19,31 +22,90 @@
                         <li>Cantidad</li>
                         <li></li>
                     </ul>
-                    <div class="lista_de_zapatilla"></div>
+                    <div class="lista_de_zapatillas">
+                        
+                    </div>
                     <button id="vaciar_carrito">VACIAR CARRITO</button>
-                    <button id="finalizar_pedido">FINALIZAR PEDIDO</button>
                 </div>
             </i>
         </nav>
-        <h1>Zapatillas</h1>
-        <div class="grid" id="lista-zapatilla"></div>
-        
-        <div class="modal" id="modal-pedido" style="display: none;">
-            <div class="modal-content">
-                <span class="close" onclick="cerrarModal()">&times;</span>
-                <h2>Finalizar Pedido</h2>
-                <form id="form-cliente">
-                    <input type="text" id="name" placeholder="Nombre" required>
-                    <input type="text" id="phone" placeholder="Teléfono" required>
-                    <input type="text" id="adress" placeholder="Dirección" required>
-                    <button type="button" onclick="finalizarPedido()">Finalizar Pedido</button>
-                    <div id="error-cliente" style="color: red;"></div>
-                </form>
-                <div id="detalle-pedido"></div>
+        <h1>zapatillas</h1>
+        <div class="grid" id="lista-zapatillas">
+            <div class="items">
+                <img src="img/500.jpg">
+                <div class="info">
+                    <h3>ADIDAS</h3>
+                    <p>Yeezy 500</p>
+                    <div class="precio">
+                        <p>$345
+                        </p>
+                        <p class="descuento">$245</p>
+                    </div>
+                    <button class="agregar-carrito" data-id="1">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="items">
+                <img src="img/adidas campus.jpg">
+                <div class="info">
+                    <h3>ADIDAS</h3>
+                    <p>Campus</p>
+                    <div class="precio">
+                        <p>$335</p>
+                        <p class="descuento">$312</p>
+                    </div>
+                    <button class="agregar-carrito" data-id="2">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="items">
+                <img src="img/adidas forum low.jpg">
+                <div class="info">
+                    <h3>ADIDAS</h3>
+                    <p>Forum low</p>
+                    <div class="precio">
+                        <p>$212</p>
+                        <p class="descuento">$122</p>
+                    </div>
+                    <button class="agregar-carrito" data-id="3">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="items">
+                <img src="img/Air-Jordan-6-Retro-Travis-Scott.jpg">
+                <div class="info">
+                    <h3>NIKE JORDAN</h3>
+                    <P>Jordan 6 T.S></P>
+                    <div class="precio">
+                        <p>$700</p>
+                        <p class="descuento">$652</p>
+                    </div>
+                    <button class="agregar-carrito" data-id="4">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="items">
+                <img src="img/jordan 4 universiti.jpg">
+                <div class="info">
+                    <h3>NIKE JORDAN</h3>
+                    <p>Jordan 4 universiti</p>
+                    <div class="precio">
+                        <p>$540</p>
+                        <p class="descuento">453</p>
+                    </div>
+                    <button class="agregar-carrito" data-id="5">Agregar al Carrito</button>
+                </div>
+            </div>
+            <div class="items">
+                <img src="img/jordan retro 3.jpg">
+                <div class="info">
+                    <h3>NIKE JORDAN</h3>
+                    <p>Jordan retro 3</p>
+                    <div class="precio">
+                        <p>$325</p>
+                        <p class="descuento">$235</p>
+                    </div>
+                    <button class="agregar-carrito" data-id="6">Agregar al Carrito</button>
+                </div>
             </div>
         </div>
     </div>
-    
-    <script src="./js/main.js"></script><!-- Enlazando el JavaScript -->
+    <script src="./js/main.js"></script>
 </body>
 </html>
