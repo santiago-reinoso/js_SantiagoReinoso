@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://kit.fontawesome.com/57faba85b1.js" crossorigin="anonymous"></script>
-
     <title>Carrito de compras</title>
 </head>
 <body>
@@ -22,90 +20,54 @@
                         <li>Cantidad</li>
                         <li></li>
                     </ul>
-                    <div class="lista_de_zapatillas">
-                        
-                    </div>
+                    <div class="lista_de_zapatillas"></div>
                     <button id="vaciar_carrito">VACIAR CARRITO</button>
+                    <button id="finalizar_pedido">FINALIZAR PEDIDO</button>
                 </div>
             </i>
         </nav>
-        <h1>zapatillas</h1>
+        <h1>Zapatillas</h1>
         <div class="grid" id="lista-zapatillas">
-            <div class="items">
-                <img src="img/500.jpg">
-                <div class="info">
-                    <h3>ADIDAS</h3>
-                    <p>Yeezy 500</p>
-                    <div class="precio">
-                        <p>$345
-                        </p>
-                        <p class="descuento">$245</p>
-                    </div>
-                    <button class="agregar-carrito" data-id="1">Agregar al Carrito</button>
-                </div>
-            </div>
-            <div class="items">
-                <img src="img/adidas campus.jpg">
-                <div class="info">
-                    <h3>ADIDAS</h3>
-                    <p>Campus</p>
-                    <div class="precio">
-                        <p>$335</p>
-                        <p class="descuento">$312</p>
-                    </div>
-                    <button class="agregar-carrito" data-id="2">Agregar al Carrito</button>
-                </div>
-            </div>
-            <div class="items">
-                <img src="img/adidas forum low.jpg">
-                <div class="info">
-                    <h3>ADIDAS</h3>
-                    <p>Forum low</p>
-                    <div class="precio">
-                        <p>$212</p>
-                        <p class="descuento">$122</p>
-                    </div>
-                    <button class="agregar-carrito" data-id="3">Agregar al Carrito</button>
-                </div>
-            </div>
-            <div class="items">
-                <img src="img/Air-Jordan-6-Retro-Travis-Scott.jpg">
-                <div class="info">
-                    <h3>NIKE JORDAN</h3>
-                    <P>Jordan 6 T.S></P>
-                    <div class="precio">
-                        <p>$700</p>
-                        <p class="descuento">$652</p>
-                    </div>
-                    <button class="agregar-carrito" data-id="4">Agregar al Carrito</button>
-                </div>
-            </div>
-            <div class="items">
-                <img src="img/jordan 4 universiti.jpg">
-                <div class="info">
-                    <h3>NIKE JORDAN</h3>
-                    <p>Jordan 4 universiti</p>
-                    <div class="precio">
-                        <p>$540</p>
-                        <p class="descuento">453</p>
-                    </div>
-                    <button class="agregar-carrito" data-id="5">Agregar al Carrito</button>
-                </div>
-            </div>
-            <div class="items">
-                <img src="img/jordan retro 3.jpg">
-                <div class="info">
-                    <h3>NIKE JORDAN</h3>
-                    <p>Jordan retro 3</p>
-                    <div class="precio">
-                        <p>$325</p>
-                        <p class="descuento">$235</p>
-                    </div>
-                    <button class="agregar-carrito" data-id="6">Agregar al Carrito</button>
-                </div>
-            </div>
+           
         </div>
+        
+        <div id="formulario" style="display: none;">
+            <h2>Finalizar Pedido</h2>
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+            <label for="adress">Dirección:</label>
+            <input type="text" id="adress" required>
+            <button id="submit-form" onclick="return confirm()">Enviar Pedido</button>
+            <p id="error-cliente" style="color: red;"></p>
+        </div>
+
+        <div id="detalle-pedido" style="margin-top: 20px;"></div>
     </div>
     <script src="./js/main.js"></script>
+    <script src="./js/btn.js"></script>
 </body>
 </html>
+
+<script>
+function confirm(){
+    Swal.fire({
+  title: "¿estas seguro?",
+  text: "despues no hay vuelta atras :D!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "si,confirmar compra!"
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: "confirmado!",
+      text: "su compra fue realizada con exito.",
+      icon: "de acuerdo"
+    });
+  }
+});
+}
+</script>

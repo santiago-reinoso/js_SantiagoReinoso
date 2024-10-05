@@ -1,25 +1,56 @@
 const carrito = document.getElementById("carrito"),
-    listaZapatilla = document.getElementById("lista-zapatillas"),
     contenedorCarrito = document.querySelector('.buy-card .lista_de_zapatillas'),
-    vaciarCarritoBtn = document.querySelector('#vaciar_carrito');
+    vaciarCarritoBtn = document.querySelector('#vaciar_carrito'),
+    finalizarPedidoBtn = document.querySelector('#finalizar_pedido'),
+    formulario = document.getElementById('formulario');
 
 let articulosCarrito = [];
 
 registrarEventsListeners();
 
 function registrarEventsListeners() {
-    listaZapatilla.addEventListener('click', agregarZapatilla);
+    document.getElementById("lista-zapatillas").addEventListener('click', agregarZapatilla);
     carrito.addEventListener('click', eliminarZapatilla);
+    vaciarCarritoBtn.addEventListener('click', vaciarCarrito);
+    finalizarPedidoBtn.addEventListener('click', mostrarFormulario);
+    document.addEventListener("DOMContentLoaded", cargarZapatillas);
+}
 
-    document.addEventListener("DOMContentLoaded", () => {
-        articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
-        carritoHTML();
-    });
+function cargarZapatillas() {
+    try {
+        fetch('./json/zapatillas.json') 
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error en la carga de datos');
+                }
+                return response.json();
+            })
+            .then(zapatillas => {
+                const listaZapatillas = document.getElementById("lista-zapatillas");
 
-    vaciarCarritoBtn.addEventListener('click', e => {
-        articulosCarrito = [];
-        LimpiarHTML();
-    });
+                zapatillas.forEach(zapatilla => {
+                    const div = document.createElement('div');
+                    div.classList.add('items');
+                    div.innerHTML = `
+                        <img src="${zapatilla.imagen}">
+                        <div class="info">
+                            <h3>${zapatilla.marca}</h3>
+                            <p>${zapatilla.modelo}</p>
+                            <div class="precio">
+                                <p>$${zapatilla.precio}</p>
+                                <p class="descuento">$${zapatilla.descuento}</p>
+                            </div>
+                            <button class="agregar-carrito" data-id="${zapatilla.id}">Agregar al Carrito</button>
+                        </div>
+                    `;
+                    listaZapatillas.appendChild(div);
+                });
+            });
+    } catch (error) {
+        console.error('Error al cargar las zapatillas:', error);
+    } finally {
+        console.log('Carga de zapatillas completada.');
+    }
 }
 
 function agregarZapatilla(e) {
@@ -40,7 +71,7 @@ function eliminarZapatilla(e) {
 function leerInfo(zapatilla) {
     const infoZapatilla = {
         imagen: zapatilla.querySelector('img').src,
-        titulo: zapatilla.querySelector('h3').textContent,
+        titulo: zapatilla.querySelector('p').textContent,
         precio: zapatilla.querySelector('.descuento').textContent,
         id: zapatilla.querySelector('button').getAttribute('data-id'),
         cantidad: 1
@@ -59,28 +90,54 @@ function leerInfo(zapatilla) {
     } else {
         articulosCarrito.push(infoZapatilla);
     }
-    
+
     carritoHTML();
 }
 
 function carritoHTML() {
     LimpiarHTML();
-    if (contenedorCarrito) { 
-        articulosCarrito.forEach(zapatilla => {
-            const fila = document.createElement('div');
-            fila.innerHTML = `
-                <img src="${zapatilla.imagen}"></img>
-                <p>${zapatilla.titulo}</p>
-                <p>${zapatilla.precio}</p>
-                <p>${zapatilla.cantidad}</p>
-                <p><span class="borrar-zapatilla" data-id="${zapatilla.id}">X</span></p>
-            `;
-            contenedorCarrito.appendChild(fila);
-        });
-    } else {
-        console.error('El contenedor del carrito no existe.');
-    }
+    articulosCarrito.forEach(zapatilla => {
+        const fila = document.createElement('div');
+        fila.innerHTML = `
+            <img src="${zapatilla.imagen}">
+            <p>${zapatilla.titulo}</p>
+            <p>${zapatilla.precio}</p>
+            <p>${zapatilla.cantidad}</p>
+            <p><span class="borrar-zapatilla" data-id="${zapatilla.id}">X</span></p>
+        `;
+        contenedorCarrito.appendChild(fila);
+    });
     sincronizarStorage();
+}
+
+function vaciarCarrito() {
+    articulosCarrito = [];
+    LimpiarHTML();
+}
+
+function mostrarFormulario() {
+    if (articulosCarrito.length > 0) {
+        formulario.style.display = 'block';
+    }
+}
+
+function leerFormulario() {
+    const nombre = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const direccion = document.getElementById('adress').value;
+
+    try {
+        if (!nombre || !email || !direccion) {
+            throw new Error("Por favor, completa todos los campos.");
+        }
+         articulosCarrito = [];
+        LimpiarHTML();
+        formulario.style.display = 'none';
+    } catch (error) {
+        document.getElementById('error-cliente').textContent = error.message;
+    } finally {
+        console.log('Intento de envío de formulario completado.');
+    }
 }
 
 function sincronizarStorage() {
@@ -88,12 +145,10 @@ function sincronizarStorage() {
 }
 
 function LimpiarHTML() {
-    if (contenedorCarrito) { 
-        while (contenedorCarrito.firstChild) {
-            contenedorCarrito.removeChild(contenedorCarrito.firstChild);
-        }
-    } else {
-        console.error('El contenedor del carrito no existe.');
+    while (contenedorCarrito.firstChild) {
+        contenedorCarrito.removeChild(contenedorCarrito.firstChild);
     }
     sincronizarStorage();
 }
+
+document.getElementById('submit-form').addEventListener('click', leerFormulario);

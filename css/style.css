@@ -18,7 +18,7 @@ html {
   display: flex;
   justify-content: flex-end;
   padding: 15px;
-  background-color:#0916ad;
+  background-color: #0916ad;
   margin-bottom: 30px;
   color: #333;
 }
@@ -42,7 +42,7 @@ html {
   height: auto;
   position: absolute;
   right: 0;
-  background-color: #0916ad ;
+  background-color: #0916ad;
 }
 
 .container nav i:hover .nav-card {
@@ -87,7 +87,7 @@ h1 {
   justify-content: center;
   margin: auto;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(280px,280px));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 280px));
   padding-bottom: 50px;
 }
 
@@ -190,11 +190,11 @@ h1 {
   border-top: solid thin gray;
 }
 
-.container nav i:hover .buy-card > .contenedor-zapatilla  {
+.container nav i:hover .buy-card > .contenedor-zapatilla {
   display: flex;
 }
 
-.contenedor-zapatilla img{
+.contenedor-zapatilla img {
   width: 100px;
 }
 
@@ -212,4 +212,41 @@ h1 {
   border-radius: 50%;
   padding: 5px 10px;
   color: #fff;
+}
+
+#formulario {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+#formulario label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+#formulario input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#formulario button {
+  background-color: #33c3f0;
+  border: none;
+  color: white;
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+#formulario button:hover {
+  background-color: #2da0c3;
 }
